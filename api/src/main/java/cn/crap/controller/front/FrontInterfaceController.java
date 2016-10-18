@@ -74,7 +74,7 @@ public class FrontInterfaceController extends BaseController<Interface>{
 	
 	@RequestMapping("/download/pdf.do")
 	@ResponseBody
-	public void download(@ModelAttribute Interface interFace,HttpServletRequest req) throws Exception {
+	public void download(@ModelAttribute Interface interFace,HttpServletRequest req,HttpServletResponse response) throws Exception {
 		interFace = interfaceService.get(interFace.getId());
 		String displayFilename = "CrapApi"+System.currentTimeMillis()+".pdf";
         byte[] buf = new byte[1024 * 1024 * 10];  
