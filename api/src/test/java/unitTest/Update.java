@@ -21,7 +21,7 @@ import cn.crap.utils.MyString;
 import cn.crap.utils.Tools;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring-servlet.xml"})
+@ContextConfiguration(locations={"classpath:springMVC.xml"})
 public class Update {
 	@Autowired
 	private IDataCenterService moduleService;
@@ -43,7 +43,7 @@ public class Update {
 	@Test
 	public void v5ToV6() throws MyException, IOException{
 		// 模块中补全项目字段
-		for(DataCenter dc: moduleService.findByMap(Tools.getMap("type","MODULE"), null, null)){
+		for(DataCenter dc: moduleService.findByMap(null, null, null)){
 			
 			if(dc.getParentId().equals(Const.TOP_MODULE) || dc.getParentId().equals(Const.PRIVATE_MODULE) || dc.getParentId().equals(Const.ADMIN_MODULE)){
 				dc.setProjectId(dc.getId());
